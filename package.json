@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "start": "DEBUG=koa* nodemon index.js"
+  },
+  "dependencies": {
+    "koa": "^2.6.2",
+    "koa-body": "^4.0.4",
+    "koa-router": "^7.4.0",
+    "koa-views": "^6.1.4",
+    "node-readability": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.6"
+  }
+}

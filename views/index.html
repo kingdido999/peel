@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Peel</title>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <style>
+    main {
+      display: flex;
+      flex-direction: column;
+      row-gap: 1rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    #input {
+      display: flex;
+      justify-content: space-between;
+      column-gap: 0.4rem;
+    }
+
+    #url {
+      width: 100%;
+    }
+
+    #content img {
+      height: auto;
+      max-width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section id='input'>
+      <input type="url" name="url" id="url" placeholder="Enter an URL" size="30" required>
+      <input type="button" name="submit" id="submit" value="Submit">
+    </section>
+
+    <section>
+      <article>
+        <h1 id='title'></h1>
+        <div id='content'></div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    var input = document.getElementById('url')
+    var submitBtn = document.getElementById('submit')
+    var title = document.getElementById('title')
+    var content = document.getElementById('content')
+
+    submitBtn.addEventListener('click', function(e) {
+      title.innerHTML = 'Loading...'
+      content.innerHTML = ''
+
+      var params = 'url=' + input.value
+      var req = new XMLHttpRequest()
+      req.open('POST', '/parse', true)
+      req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+
+      req.onload = function () {
+        var res = JSON.parse(this.responseText)
+        title.innerHTML = res.title
+        content.innerHTML = res.content
+      }
+
+      req.send(params)
+    })
+  </script>
+</body>
+</html>
