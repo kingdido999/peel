@@ -17,7 +17,7 @@ router.get('/', async ctx => {
   await ctx.render('index')
 })
 
-router.post('/parse', async ctx => {
+router.post('/', async ctx => {
   const { url } = ctx.request.body
   console.log(`URL: ${url}`)
 

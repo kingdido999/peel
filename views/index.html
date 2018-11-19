@@ -1,18 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>Peel</title>
+  <title>Peel: Extract website content that matters.</title>
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="API service to extract useful content from an URL.">
+  <meta name="keywords" content="extract, article, content, api, service">
+  <meta name="author" content="Desmond Ding">
   
   <style>
+    body, input {
+      font-size: 1.2rem;
+    }
+
     main {
-      display: flex;
-      flex-direction: column;
-      row-gap: 1rem;
-      max-width: 680px;
+      max-width: 720px;
       margin: 0 auto;
+    }
+
+    code {
+        background-color: #eee;
+        color: purple;
+        border-radius: 3px;
+        font-family: courier, monospace;
+        padding: 0 3px;
     }
 
     #input {
@@ -25,25 +38,44 @@
       width: 100%;
     }
 
+    #submit {
+      background: gold;
+    }
+
     #content img {
       height: auto;
       max-width: 100%;
     }
   </style>
 </head>
-<body>
-  <main>
-    <section id='input'>
-      <input type="url" name="url" id="url" placeholder="Enter an URL" size="30" required>
-      <input type="button" name="submit" id="submit" value="Submit">
-    </section>
 
-    <section>
-      <article>
-        <h1 id='title'></h1>
-        <div id='content'></div>
-      </article>
-    </section>
+<body>
+  
+  <main>
+    <h1>Extract website content that matters.</h1>
+    <p>An API service to extract useful content from an URL.</p>
+
+    <br/>
+
+    <h3>How to use the API?</h3>
+    <p>Send a <code>POST</code> request to <code>https://peel.fun</code> with a <code>url</code> parameter.</p>
+    <p>It returns a JSON object with <code>title</code> and <code>content</code> as a HTML string.</p> 
+
+    <br/>
+
+    <h3>Demo</h3>
+    <div id="input">
+      <input type="url" name="url" id="url" placeholder="https://" size="30">
+      <input type="button" name="submit" id="submit" value="Submit">
+    </div>
+    <p><a href="https://github.com/kingdido999/peel/issues/new" target="_blank">Report an issue</a></p>
+
+    <br/>
+
+    <article>
+      <h1 id='title'></h1>
+      <div id='content'></div>
+    </article>
   </main>
 
   <script>
@@ -53,12 +85,17 @@
     var content = document.getElementById('content')
 
     submitBtn.addEventListener('click', function(e) {
+      var url = input.value
+      
+      if (!isURL(url)) {
+        return alert("Please enter a valid URL.")
+      }
+
       title.innerHTML = 'Loading...'
       content.innerHTML = ''
 
-      var params = 'url=' + input.value
       var req = new XMLHttpRequest()
-      req.open('POST', '/parse', true)
+      req.open('POST', '/', true)
       req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
 
       req.onload = function () {
@@ -67,8 +104,19 @@
         content.innerHTML = res.content
       }
 
+      var params = 'url=' + url
       req.send(params)
     })
+
+    function isURL(str) {
+      var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+ // domain name
+          '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+          '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+          '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+          '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+        return pattern.test(str);
+    }
   </script>
 </body>
 </html>
