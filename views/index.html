@@ -55,13 +55,9 @@
     <h1>Extract website content that matters.</h1>
     <p>An API service to extract useful content from an URL.</p>
 
-    <br/>
-
     <h3>How to use the API?</h3>
     <p>Send a <code>POST</code> request to <code>https://peel.fun</code> with a <code>url</code> parameter.</p>
     <p>It returns a JSON object with <code>title</code> and <code>content</code> as a HTML string.</p> 
-
-    <br/>
 
     <h3>Demo</h3>
     <div id="input">
@@ -69,8 +65,6 @@
       <input type="button" name="submit" id="submit" value="Submit">
     </div>
     <p><a href="https://github.com/kingdido999/peel/issues/new" target="_blank">Report an issue</a></p>
-
-    <br/>
 
     <article>
       <h1 id='title'></h1>
@@ -102,6 +96,7 @@
         var res = JSON.parse(this.responseText)
         title.innerHTML = res.title
         content.innerHTML = res.content
+        console.log(res.text)
       }
 
       var params = 'url=' + url
