@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Peel: Extract website content that matters.</title>
+  <title>Peel: get clean content from any url.</title>
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="API service to extract useful content from an URL.">
@@ -11,34 +11,59 @@
   <meta name="author" content="Desmond Ding">
   
   <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
     body, input {
       font-size: 1.2rem;
+      font-family: Helvetica, Arial, sans-serif;
+    }
+
+    input {
+      padding: 5px 10px;
     }
 
     main {
-      max-width: 720px;
-      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      height: 100vh;
+    }
+
+    section {
+      padding: 1rem 2rem;
+    }
+
+    #main {
+      flex-grow: 9;
+      max-width: 800px;
+    }
+
+    #info {
+      flex-grow: 1;
     }
 
     code {
-        background-color: #eee;
-        color: purple;
-        border-radius: 3px;
-        font-family: courier, monospace;
-        padding: 0 3px;
+      background-color: #eee;
+      border-radius: 3px;
+      font-family: courier, monospace;
+      padding: 0 3px;
     }
 
     #input {
       display: flex;
-      justify-content: space-between;
-      column-gap: 0.4rem;
+      flex-wrap: wrap;
+      column-gap: 0.5rem;
+      row-gap: 0.5rem;
     }
 
     #url {
-      width: 100%;
+      flex-grow: 8;
     }
 
     #submit {
+      flex-grow: 1;
       background: gold;
     }
 
@@ -50,27 +75,37 @@
 </head>
 
 <body>
-  
   <main>
-    <h1>Extract website content that matters.</h1>
-    <p>An API service to extract useful content from an URL.</p>
+    <section id="main">
+    <h1>Get clean content from any URL.</h1>
 
-    <h3>How to use the API?</h3>
-    <p>Send a <code>POST</code> request to <code>https://peel.fun</code> with a <code>url</code> parameter.</p>
-    <p>It returns a JSON object with <code>title</code> and <code>content</code> as a HTML string.</p> 
-
-    <h3>Demo</h3>
     <div id="input">
       <input type="url" name="url" id="url" placeholder="https://" size="30">
-      <input type="button" name="submit" id="submit" value="Submit">
+      <input type="button" name="submit" id="submit" value="Extract">
     </div>
-    <p><a href="https://github.com/kingdido999/peel/issues/new" target="_blank">Report an issue</a></p>
+
 
     <article>
       <h1 id='title'></h1>
       <div id='content'></div>
     </article>
+    </section>
+
+    <section id="info">
+      <h2>FAQ</h2>
+      <details>
+        <summary>How to use the API?</summary>
+        <p>Send a <code>POST</code> request to <code>https://peel.fun</code> with a <code>url</code> parameter.</p>
+      </details>
+      <br/>
+
+      <details>
+        <summary>Having an issue?</summary>
+        <p>You can report an issue <a href="https://github.com/kingdido999/peel/issues/new" target="_blank">here</a>.</p>
+      </details>
+    </section>
   </main>
+
 
   <script>
     var input = document.getElementById('url')
