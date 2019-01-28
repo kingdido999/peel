@@ -3,7 +3,7 @@
     "start": "DEBUG=koa* nodemon index.js"
   },
   "dependencies": {
-    "koa": "2.6.2",
+    "koa": "2.7.0",
     "koa-body": "4.0.6",
     "koa-router": "7.4.0",
     "koa-views": "6.1.5",
