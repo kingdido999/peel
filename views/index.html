@@ -26,22 +26,16 @@
     }
 
     main {
-      display: flex;
-      flex-wrap: wrap;
-      height: 100vh;
+      max-width: 700px;
+      margin: 0 auto;
     }
 
-    section {
-      padding: 1rem 2rem;
+    h1 {
+      display: none;
     }
 
     #main {
-      flex-grow: 9;
-      max-width: 800px;
-    }
-
-    #info {
-      flex-grow: 1;
+      margin: 2rem 1rem;
     }
 
     code {
@@ -67,6 +61,16 @@
       background: gold;
     }
 
+    #clear {
+      flex-grow: 1;
+      background: gainsboro;
+    }
+
+    article {
+      margin: 2rem 0;
+      line-height: 1.8rem;
+    }
+
     #content img {
       height: auto;
       max-width: 100%;
@@ -77,39 +81,25 @@
 <body>
   <main>
     <section id="main">
-    <h1>Get clean content from any URL.</h1>
+      <h1>Get clean content from any URL</h1>
 
-    <div id="input">
-      <input type="url" name="url" id="url" placeholder="https://" size="30">
-      <input type="button" name="submit" id="submit" value="Extract">
-    </div>
+      <div id="input">
+        <input type="url" name="url" id="url" placeholder="Enter URL" size="30">
+        <input type="button" name="submit" id="submit" value="Extract">
+        <input type="button" name="clear" id="clear" value="Clear">
+      </div>
 
-
-    <article>
-      <h1 id='title'></h1>
-      <div id='content'></div>
-    </article>
-    </section>
-
-    <section id="info">
-      <h2>FAQ</h2>
-      <details>
-        <summary>How to use the API?</summary>
-        <p>Send a <code>POST</code> request to <code>https://peel.fun</code> with a <code>url</code> parameter.</p>
-      </details>
-      <br/>
-
-      <details>
-        <summary>Having an issue?</summary>
-        <p>You can report an issue <a href="https://github.com/kingdido999/peel/issues/new" target="_blank">here</a>.</p>
-      </details>
+      <article>
+        <h1 id='title'></h1>
+        <div id='content'></div>
+      </article>
     </section>
   </main>
-
 
   <script>
     var input = document.getElementById('url')
     var submitBtn = document.getElementById('submit')
+    var clearBtn = document.getElementById('clear')
     var title = document.getElementById('title')
     var content = document.getElementById('content')
 
@@ -136,6 +126,12 @@
 
       var params = 'url=' + url
       req.send(params)
+    })
+
+    clearBtn.addEventListener('click', function(e) {
+      input.value = ''
+      title.innerHTML = ''
+      content.innerHTML = ''
     })
 
     function isURL(str) {
