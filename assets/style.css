@@ -4,6 +4,10 @@ body {
   font-family: Helvetica, Arial, sans-serif;
 }
 
+h1 {
+  line-height: 2.4rem;
+}
+
 main {
   max-width: 600px;
   margin: 0 auto;
