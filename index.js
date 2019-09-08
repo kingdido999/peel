@@ -2,35 +2,33 @@ const path = require('path')
 const Koa = require('koa')
 const Router = require('koa-router')
 const KoaBody = require('koa-body')
+const serve = require('koa-static')
 const views = require('koa-views')
 const util = require('util')
 const readability = require('node-readability')
 const read = util.promisify(readability)
 
 const app = new Koa()
-app.use(views(path.join(__dirname, '/views')))
+app.use(serve('assets'))
+app.use(views(path.join(__dirname, '/views'), { extension: 'pug' }))
 app.use(KoaBody())
 
 const router = new Router()
 
 router.get('/', async ctx => {
-  await ctx.render('index')
-})
+  const { url } = ctx.request.query
 
-router.post('/', async ctx => {
-  const { url } = ctx.request.body
   console.log(`URL: ${url}`)
 
   const article = await read(url)
   const { title, content } = article
 
-  ctx.response.body = {
+  article.close()
+
+  await ctx.render('article', {
     title,
     content
-  }
-
-  article.close()
-  console.log('Done.')
+  })
 })
 
 app.use(router.routes())

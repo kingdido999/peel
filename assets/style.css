@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1.2rem;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+main {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+code, pre {
+  background-color: #eee;
+  border-radius: 3px;
+  font-family: courier, monospace;
+  font-size: initial;
+}
+
+code {
+  padding: 0.2rem;
+}
+
+pre {
+  padding: 1rem;
+  overflow: auto;
+}
+
+article {
+  margin: 2rem 0;
+  line-height: 1.8rem;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
