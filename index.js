@@ -18,7 +18,7 @@ const router = new Router()
 router.get('/', async ctx => {
   const { url } = ctx.request.query
 
-  if (url) {
+  if (url && url !== '') {
     console.log(`URL: ${url}`)
 
     const article = await read(url)
@@ -30,6 +30,8 @@ router.get('/', async ctx => {
       title,
       content
     })
+  } else if (url === undefined) {
+    ctx.redirect('/?url=')
   } else {
     await ctx.render('index')
   }
