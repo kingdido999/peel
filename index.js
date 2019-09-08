@@ -18,17 +18,21 @@ const router = new Router()
 router.get('/', async ctx => {
   const { url } = ctx.request.query
 
-  console.log(`URL: ${url}`)
+  if (url) {
+    console.log(`URL: ${url}`)
 
-  const article = await read(url)
-  const { title, content } = article
+    const article = await read(url)
+    const { title, content } = article
 
-  article.close()
+    article.close()
 
-  await ctx.render('article', {
-    title,
-    content
-  })
+    await ctx.render('article', {
+      title,
+      content
+    })
+  } else {
+    await ctx.render('index')
+  }
 })
 
 app.use(router.routes())

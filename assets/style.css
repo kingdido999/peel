@@ -1,13 +1,13 @@
 body {
   margin: 0;
   padding: 0;
-  font-size: 1.2rem;
   font-family: Helvetica, Arial, sans-serif;
 }
 
 main {
-  max-width: 700px;
+  max-width: 600px;
   margin: 0 auto;
+  padding: 1rem;
 }
 
 code, pre {
@@ -28,7 +28,7 @@ pre {
 
 article {
   margin: 2rem 0;
-  line-height: 1.8rem;
+  line-height: 1.4rem;
 }
 
 img {
