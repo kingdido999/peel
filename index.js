@@ -27,6 +27,7 @@ router.get('/', async ctx => {
     article.close()
 
     await ctx.render('article', {
+      url,
       title,
       content
     })
