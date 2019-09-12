@@ -76,25 +76,6 @@ a:hover {
   color: #0FA0CE; }
 
 
-/* Lists
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-ul {
-  list-style: circle inside; }
-ol {
-  list-style: decimal inside; }
-ol, ul {
-  padding-left: 0;
-  margin-top: 0; }
-ul ul,
-ul ol,
-ol ol,
-ol ul {
-  margin: 1.5rem 0 1.5rem 3rem;
-  font-size: 90%; }
-li {
-  margin-bottom: 1rem; }
-
-
 /* Code
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 code, pre {
@@ -142,7 +123,7 @@ hr {
   margin-top: 3rem;
   margin-bottom: 3.5rem;
   border-width: 0;
-  border-top: 1px solid #E1E1E1; }
+  border-top: 1px solid #eaecef; }
 
 img {
   max-width: 100%;
