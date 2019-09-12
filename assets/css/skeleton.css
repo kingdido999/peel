@@ -104,19 +104,6 @@ td:last-child {
   padding-right: 0; }
 
 
-/* Spacing
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-pre,
-blockquote,
-dl,
-figure,
-table,
-p,
-ul,
-ol {
-  margin-bottom: 2.5rem; }
-
-
 /* Misc
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 hr {
