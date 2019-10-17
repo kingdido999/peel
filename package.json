@@ -7,7 +7,7 @@
     "koa-body": "4.1.1",
     "koa-router": "7.4.0",
     "koa-static": "5.0.0",
-    "koa-views": "6.1.5",
+    "koa-views": "6.2.1",
     "node-readability": "3.0.0",
     "pug": "2.0.4"
   },
